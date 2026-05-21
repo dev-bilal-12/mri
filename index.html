@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NOVA CART</title>
+
+  <!-- GOOGLE FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#0f172a;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    /* ================= NAVBAR ================= */
+
+    nav{
+      width:100%;
+      padding:18px 8%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:1000;
+
+      background:rgba(255,255,255,0.08);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+
+    /* ===== LOGO CIRCLE ===== */
+
+    .logo-circle{
+      width:90px;
+      height:90px;
+      border-radius:50%;
+      overflow:hidden;
+      border:4px solid rgba(255,255,255,0.2);
+      box-shadow:0 0 25px rgba(0,255,255,0.3);
+      background:rgba(255,255,255,0.08);
+    }
+
+    .logo-circle img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero{
+      width:100%;
+      min-height:100vh;
+      padding-top:150px;
+
+      background:
+      linear-gradient(rgba(15,23,42,0.75), rgba(15,23,42,0.9)),
+      url('https://images.unsplash.com/photo-1517336714739-489689fd1ca8?q=80&w=1400');
+
+      background-size:cover;
+      background-position:center;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      text-align:center;
+      padding-left:20px;
+      padding-right:20px;
+    }
+
+    .hero h1{
+      font-size:65px;
+      font-weight:700;
+      margin-bottom:15px;
+
+      background:linear-gradient(to right,#00e5ff,#ffffff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero p{
+      max-width:700px;
+      line-height:1.8;
+      color:#cbd5e1;
+      font-size:18px;
+    }
+
+    .hero-btn{
+      margin-top:30px;
+      padding:14px 35px;
+      border:none;
+      border-radius:50px;
+      background:linear-gradient(to right,#06b6d4,#3b82f6);
+      color:white;
+      font-size:16px;
+      cursor:pointer;
+      transition:0.3s;
+      box-shadow:0 10px 25px rgba(0,255,255,0.2);
+    }
+
+    .hero-btn:hover{
+      transform:translateY(-4px) scale(1.03);
+    }
+
+    /* ================= PRODUCTS ================= */
+
+    .products{
+      width:100%;
+      padding:90px 8%;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:42px;
+      margin-bottom:60px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:35px;
+    }
+
+    /* ================= CARD ================= */
+
+    .card{
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:25px;
+      overflow:hidden;
+
+      backdrop-filter:blur(10px);
+
+      transition:0.4s;
+      box-shadow:0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 20px 40px rgba(0,255,255,0.15);
+    }
+
+    .card-image{
+      width:100%;
+      height:260px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .card-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:0.5s;
+    }
+
+    .card:hover .card-image img{
+      transform:scale(1.08);
+    }
+
+    .card-content{
+      padding:22px;
+    }
+
+    .product-name{
+      font-size:24px;
+      font-weight:600;
+      margin-bottom:10px;
+    }
+
+    .rating{
+      color:#facc15;
+      font-size:18px;
+      margin-bottom:15px;
+    }
+
+    .desc{
+      color:#cbd5e1;
+      line-height:1.7;
+      font-size:14px;
+      margin-bottom:20px;
+    }
+
+    .buy-btn{
+      width:100%;
+      padding:13px;
+      border:none;
+      border-radius:12px;
+      background:linear-gradient(to right,#06b6d4,#2563eb);
+      color:white;
+      font-size:15px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .buy-btn:hover{
+      transform:scale(1.02);
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer{
+      text-align:center;
+      padding:30px;
+      color:#94a3b8;
+      border-top:1px solid rgba(255,255,255,0.08);
+      margin-top:40px;
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:42px;
+      }
+
+      .hero p{
+        font-size:15px;
+      }
+
+      .logo-circle{
+        width:75px;
+        height:75px;
+      }
+
+      .section-title{
+        font-size:34px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+
+  <nav>
+
+    <!-- LOGO IMAGE -->
+    <!-- YAHAN APNI LOGO IMAGE DALNI HAI -->
+
+    <div class="logo-circle">
+      <img src="./MRI logo.png" alt="logo">
+    </div>
+
+  </nav>
+
+  <!-- ================= HERO SECTION ================= -->
+
+  <section class="hero">
+
+    <h1>MRI</h1>
+
+    <p>
+MRI Indenting is a professional Indenting house and company in Pakistan. offering its services to Pharmaceutical, food, feed and other allied Industries for procuring raw materials, packaging & others items from world renowned and trusted Manufacturer with international standing. We believe in providing excellent services to local customers and enable and facilitate our foreign Principals and suppliers to sell and market their products in Pakistan as they sell in their own country. We protect interests of both parties equally and mutually without any discrimination. 
+    </p>
+
+    <button class="hero-btn">Explore Products</button>
+
+  </section>
+
+  <!-- ================= PRODUCTS SECTION ================= -->
+
+  <section class="products">
+
+    <h2 class="section-title">Featured Products</h2>
+
+    <div class="cards">
+
+      <!-- ================================================= -->
+      <!-- ================= CARD 1 ======================== -->
+      <!-- ================================================= -->
+
+      <div class="card">
+
+        <div class="card-image">
+
+          <!-- IMAGE 1 YAHAN DALNI HAI -->
+          <img src="./IMG (1).jpeg" alt="pointer">
+
+        </div>
+
+        <div class="card-content">
+
+          <!-- PRODUCT NAME YAHAN LIKHNA HAI -->
+          <h3 class="product-name">Piano Black pointer</h3>
+
+          <!-- RATING -->
+          <div class="rating">★★★★★ 4.8</div>
+
+          <p class="desc">
+          Elegant black patterned piano featuring weighted keys, rich resonance, craftsmanship.
+          </p>
+
+          <button class="buy-btn">View Product</button>
+
+        </div>
+
+      </div>
+
+      <!-- ================================================= -->
+      <!-- ================= CARD 2 ======================== -->
+      <!-- ================================================= -->
+
+      <div class="card">
+
+        <div class="card-image">
+
+          <!-- IMAGE 2 YAHAN DALNI HAI -->
+   <img src="./IMG (2).jpeg" alt="Card Holder">
+
+        </div>
+
+        <div class="card-content">
+
+          <!-- PRODUCT NAME YAHAN LIKHNA HAI -->
+          <h3 class="product-name">Card Holder</h3>
+
+          <!-- RATING -->
+          <div class="rating">★★★★★ 4.7</div>
+
+          <p class="desc">
+            Premium transparent card holder with sleek leather finish and compact design.
+          </p>
+
+          <button class="buy-btn">View Product</button>
+
+        </div>
+
+      </div>
+
+      <!-- ================================================= -->
+      <!-- ================= CARD 3 ======================== -->
+      <!-- ================================================= -->
+
+      <div class="card">
+
+        <div class="card-image">
+
+          <!-- IMAGE 3 YAHAN DALNI HAI -->
+          <img src="./IMG (3).jpeg" alt=" Hand Injector Money Counting Foam">
+
+        </div>
+
+        <div class="card-content">
+
+          <!-- PRODUCT NAME YAHAN LIKHNA HAI -->
+          <h3 class="product-name"> Hand Injector Money Counting Foam</h3>
+
+          <!-- RATING -->
+          <div class="rating">★★★★★ 4.9</div>
+
+          <p class="desc">
+Durable hand injector money counting foam ensures smooth, accurate cash separation.
+          </p>
+
+          <button class="buy-btn">View Product</button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+    © 2026 MRI Identing House 
+  </footer>
+
+</body>
+</html>
